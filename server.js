@@ -28,5 +28,4 @@ app.use('/api', api);
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
-  console.log('GITHUB_URL is set to ' + process.env.GITHUB_URL);
 });
