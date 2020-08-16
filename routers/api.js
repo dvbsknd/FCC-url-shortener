@@ -1,15 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-router.get("/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
-});
-
-router.post('/post', (req, res) => {
-  let ipaddress = req.ip;
-  let language = req.header('Accept-Language');
-  let software = req.header('User-Agent');
-  res.json({ ipaddress, language, software });
+router.post('/shorturl/new', (req, res) => {
+  const original_url = 'www.google.com';
+  const short_url = 1;
+  res.json({ original_url, short_url });
 });
 
 module.exports = router;
