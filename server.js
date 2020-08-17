@@ -31,7 +31,15 @@ app.use('/git', gitWebhook);
 const api = require('./routers/api.js');
 app.use('/api', api);
 
-// listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+// CHeck the database connection
+const mongoose = require('mongoose');
+const mongoURI = process.env.MONGO_URI;
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(db => {
+    console.log(`Database ${db.connections[0].name} on ${db.connections[0].host} connected`);
+    // Listen for requests if the database is online
+    const listener = app.listen(process.env.PORT, function () {
+      console.log('Your app is listening on port ' + listener.address().port);
+    });
+  })
+  .catch(error => console.log(error));

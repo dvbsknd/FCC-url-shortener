@@ -1,4 +1,4 @@
-exports.hashId = () => {
+module.exports = () => {
   const lowercase = [...Array(26)].map((_, i) => String.fromCharCode(i + 97)).join('');
   const uppercase = [...Array(26)].map((_, i) => String.fromCharCode(i + 65)).join('');
   const numbers   = [...Array(10)].map((_, i) => String.fromCharCode(i + 48)).join('');
