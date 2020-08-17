@@ -1,12 +1,13 @@
-/* const dns = require('dns');
-dns.lookup(match, (err, address, family) => {
-  console.log('address: %j family: IPv%s', address, family);
-});*/
-module.exports = (url) => {
+const dns = require('dns');
+
+module.exports = (url, callback) => {
   try {
     let urlObject = new URL(url);
-    return { url: urlObject };
+    dns.lookup(urlObject.host, (err, address, family) => {
+      console.log('Found address: %j family: IPv%s', address, family);
+      callback(null, url);
+    });
   } catch (err) {
-    return { error: err.code };
+    callback(err);
   }
 };
