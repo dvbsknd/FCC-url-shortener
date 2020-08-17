@@ -2,5 +2,6 @@
 const regexp = /https?:\/\/.+\..+\/?./g;
 
 module.exports = (url) => {
-  return url.match(regexp)[0];
+  const match = url.match(regexp);
+  return match ? url : match;
 };
