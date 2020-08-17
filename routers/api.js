@@ -4,9 +4,6 @@ const shortenUrl = require('../services/shortenUrl.js');
 
 router.use(express.urlencoded({ extended: true }));
 
-router.post('/shorturl/new', (req, res) => {
-  const { url, key, error } = shortenUrl(req.body.url);
-  res.json(error ? { error } : { original_url: url, short_url: key });
-});
+router.post('/shorturl/new', (req, res) => shortenUrl(req, res));
 
 module.exports = router;

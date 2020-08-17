@@ -1,4 +1,4 @@
 function validateUrl(url) {
-  return 'invalid URL';
+  // return 'invalid URL';
 }
 module.exports = validateUrl;
