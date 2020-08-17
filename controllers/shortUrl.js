@@ -1,4 +1,4 @@
-const ShortUrl = require('../database/models/shortUrl.js');
+const ShortUrl = require('../models/shortUrl.js');
 const validateUrl = require('../utils/validateUrl.js');
 const hashId = require('../utils/hashId.js');
 
