@@ -21,8 +21,8 @@ exports.saveShortUrl = (url, res) => {
   // Save it and return the saved data
   shortUrl.save((err, data) => {
     if (err) console.error(err);
-    console.log(data.url, 'saved');
-    res.send(data);
+    console.log('Shortened', data.url, 'to', data.code);
+    res.json({ original_url: data.url, short_url: code });
   });
 };
 
