@@ -1,7 +1,12 @@
-// Regex for URL validation from https://gist.github.com/dperini/729294
-const regexp = /https?:\/\/.+\..+\/?./g;
-
+/* const dns = require('dns');
+dns.lookup(match, (err, address, family) => {
+  console.log('address: %j family: IPv%s', address, family);
+});*/
 module.exports = (url) => {
-  const match = url.match(regexp);
-  return match ? url : match;
+  try {
+    let urlObject = new URL(url);
+    return { url: urlObject };
+  } catch (err) {
+    return { error: err.code };
+  }
 };
